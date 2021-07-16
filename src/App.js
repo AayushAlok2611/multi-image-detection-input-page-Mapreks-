@@ -1,15 +1,12 @@
 import React from 'react';
-
-import MultiImageInput from './components/MultiImageInput';
+import MultiImageInputRender from './components/MultiImageInputRender';
 
 
 
 function App() {
   return (
     <div>
-        <MultiImageInput />
-      
-      
+        <MultiImageInputRender />
     </div>
   );
 }

@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import "./styles.css";
 
 import Button from "@material-ui/core/Button";
-import Icon from "@material-ui/core/Icon";
 import SaveIcon from "@material-ui/icons/Save";
+import TextField from "@material-ui/core/TextField";
 
-const App = () => {
+const MultiImageInput = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
-
+  const [name,setName]  = useState("");
+  const [age,setAge] = useState();
+  const [gender,setGender] = useState("");
   const handleImageChange = (e) => {
     // console.log(e.target.files[])
     if (e.target.files) {
@@ -34,18 +36,30 @@ const App = () => {
   return (
     <div className="app">
       <div className="heading">
-		  <h2>
+		  <p>
 		  User Select Only 10 Photos
-		  </h2>
+		  </p>
 	  </div>
       <div>
         <input type="file" id="file" multiple onChange={handleImageChange} />
-        <div className="label-holder">
           <label htmlFor="file" className="label"> Add Image
             <i className="material-icons">add_a_photo</i>        
           </label>
-
-          <label className="upload">
+            <TextField 
+            label = "name"
+            value = {name}
+            onChange = {(e)=>setName(e.target.value)}
+            />
+            <TextField 
+            label = "age"
+            value = {age}
+            onChange = {(e)=>setAge(e.target.value)}
+            />
+            <TextField 
+            label = "gender"
+            value = {gender}
+            onChange = {(e)=>setGender(e.target.value)}
+            />
             <Button
               onClick={() => {
                                                                 //submit button post req
@@ -53,18 +67,16 @@ const App = () => {
               }}
               variant="contained"
               color="primary"
-              size="large"
+              size="small"
               className="material-icons"
               startIcon={<SaveIcon />}
             >
-              Submit
+              Save
             </Button>
-          </label>
-        </div>
         <div className="result">{renderPhotos(selectedFiles)}</div>
       </div>
     </div>
   );
 };
 
-export default App;
+export default MultiImageInput;
